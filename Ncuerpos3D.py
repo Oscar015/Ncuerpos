@@ -21,7 +21,8 @@ eps = np.finfo(float).eps
 # =============================================================================
 
 
-def LeerDict(dic, N):
+def LeerDict(dic, cuerpos):
+    N = len(cuerpos)
     colors = np.array([dic[cuerpos[i]]['color'] for i in range(N)], str)
     m = np.array([dic[cuerpos[i]]['masa'] for i in range(N)], np.float64)
     x_0 = np.array([dic[cuerpos[i]]['x_0'] for i in range(N)], np.float64)
