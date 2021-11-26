@@ -7,7 +7,7 @@ Created on Fri Mar 19 19:28:43 2021
 import numpy as np
 import matplotlib.pyplot as plt
 
-from numba import njit
+# from numba import njit
 
 from matplotlib import animation
 from scipy.constants import G
@@ -40,7 +40,7 @@ def LoadData(path, shape):
     return data
 
 
-@njit
+# @njit
 def Calc_a(m, pos):
     a = np.array([[0., 0., 0.]]*N, np.float64)
     for i in range(len(pos)):
@@ -51,7 +51,7 @@ def Calc_a(m, pos):
     return a
 
 
-@njit
+# @njit
 def CalcularSimulacion(t, m, x_0, v_0):
 
     X = np.zeros(shape, np.float64)
@@ -129,7 +129,7 @@ if __name__ == '__main__':
 
     t_annos = 500  # años de duración de la simulación
 
-    Read = False  # True lee datos, falso los guarda
+    Read = True  # True lee datos, falso los guarda
     Animar = True
 
     path = 'Solar_System.csv'
