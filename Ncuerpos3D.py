@@ -7,7 +7,7 @@ Created on Fri Mar 19 19:28:43 2021
 import numpy as np
 import matplotlib.pyplot as plt
 
-# from numba import njit
+from numba import njit
 
 from matplotlib import animation
 from scipy.constants import G
@@ -40,7 +40,7 @@ def LoadData(path, shape):
     return data
 
 
-# @njit
+@njit
 def Calc_a(m, pos):
     a = np.array([[0., 0., 0.]]*N, np.float64)
     for i in range(len(pos)):
@@ -51,7 +51,7 @@ def Calc_a(m, pos):
     return a
 
 
-# @njit
+@njit
 def CalcularSimulacion(t, m, x_0, v_0):
 
     X = np.zeros(shape, np.float64)
@@ -103,8 +103,9 @@ def Plot(X):
         ax.set_zlim3d([-lim+X[i, 0, 2]*15, lim+X[i, 0, 2]*15])
 
         for j in range(N):
-            lines[j].set_data(data[speed*i, j, 0], data[speed*i, j, 1])
-            lines[j].set_3d_properties(data[speed*i, j, 2])
+            lines[j].set_data(np.array([0, data[speed*i, j, 0]]),
+                              np.array([0, data[speed*i, j, 1]]))
+            lines[j].set_3d_properties(np.array([0, data[speed*i, j, 2]]))
             lines[N+j].set_data(data[:speed*i, j, 0], data[:speed*i, j, 1])
             lines[N+j].set_3d_properties(data[:speed*i, j, 2])
             bar.update()
