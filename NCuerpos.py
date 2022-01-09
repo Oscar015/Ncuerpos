@@ -116,7 +116,7 @@ if __name__ == '__main__':
 
     t_annos = 500  # años de duración de la simulación
 
-    Read = False  # True lee datos, falso los guarda
+    Read = True  # True lee datos, falso los guarda
     Animar = True
 
     path = 'Solar_System.csv'
