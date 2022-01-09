@@ -103,9 +103,9 @@ def Plot(X):
         ax.set_zlim3d([-lim+X[i, 0, 2]*15, lim+X[i, 0, 2]*15])
 
         for j in range(N):
-            lines[j].set_data(np.array([0, data[speed*i, j, 0]]),
-                              np.array([0, data[speed*i, j, 1]]))
-            lines[j].set_3d_properties(np.array([0, data[speed*i, j, 2]]))
+            lines[j].set_data(np.array([data[speed*i, j, 0]]),
+                              np.array([data[speed*i, j, 1]]))
+            lines[j].set_3d_properties(np.array([data[speed*i, j, 2]]))
             lines[N+j].set_data(data[:speed*i, j, 0], data[:speed*i, j, 1])
             lines[N+j].set_3d_properties(data[:speed*i, j, 2])
             bar.update()
