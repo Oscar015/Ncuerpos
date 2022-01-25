@@ -31,7 +31,7 @@ def LeerDict(dic, cuerpos):
 
 
 def SaveData(data, path):
-    data = data.reshape(np.prod(data.shape))
+    data = data.reshape(-1)
     data.tofile(path, sep=';')
 
 
@@ -139,7 +139,7 @@ if __name__ == '__main__':
     t = np.arange(0, T_fin, deltaT)
 
     N = len(cuerpos)
-    shape = (len(t)+1, N, 3)
+    shape = (-1, N, 3)
 
     colors, m, x_0, v_0 = LeerDict(Planetas.DictC, cuerpos)
     if Read:
