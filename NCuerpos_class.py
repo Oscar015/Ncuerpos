@@ -36,7 +36,7 @@ class SimulacionNBody:
         self.X = np.zeros(self.shape, np.float64)
         
     
-    def load_data(self, file:str):
+    def LoadData(self, file:str):
         data = np.loadtxt(file, delimiter=';').reshape(self.shape)
         self.X = data.copy()
 
@@ -70,6 +70,7 @@ class SimulacionNBody:
             V[i+1] = V[i] + A[i+1] * self.dt
             X[i+1] = X[i] + V[i+1] * self.dt
             bar.update()
+
         self.X = X
     
 
@@ -162,9 +163,10 @@ class SimulacionNBody:
 
 if __name__=="__main__":
 
-    years = 500
+    years = 50
     sim = SimulacionNBody(np.array(['sol', 'mercurio', 'venus', 'tierra_S',
                         'marte', 'jupiter', 'saturno', 'urano', 'neptuno']), 86400*365*years,86400)
     sim.CalcularSimulacion()
     sim.SaveData("Solar_system"+str(years)+".csv")
     sim.Plot3D(30)
+    sim.Plot2D(30)
