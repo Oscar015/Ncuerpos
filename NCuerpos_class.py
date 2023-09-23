@@ -1,8 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from numba import njit
-
 from matplotlib import animation
 from matplotlib.patches import Rectangle
 from scipy.constants import G
@@ -22,7 +20,7 @@ def LeerDict(dic, cuerpos):
 
 class SimulacionNBody:
     cuerpos = np.array([],dtype=str)
-    def __init__(self, cuerpos: np.ndarray[str], t_fin:float, dt:float, path = ""):
+    def __init__(self, cuerpos: np.ndarray, t_fin:float, dt:float, path = ""):
         self.cuerpos = np.array(['sol', 'mercurio', 'venus', 'tierra_S',
                         'marte', 'jupiter', 'saturno', 'urano', 'neptuno'])
         
@@ -163,7 +161,7 @@ class SimulacionNBody:
 
 if __name__=="__main__":
 
-    years = 50
+    years = 500
     sim = SimulacionNBody(np.array(['sol', 'mercurio', 'venus', 'tierra_S',
                         'marte', 'jupiter', 'saturno', 'urano', 'neptuno']), 86400*365*years,86400)
     sim.CalcularSimulacion()
